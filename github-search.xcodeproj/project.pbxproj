@@ -17,6 +17,9 @@
 		8D313CAC20728A9900E08B82 /* github_searchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D313CAB20728A9900E08B82 /* github_searchUITests.swift */; };
 		8D313CC92072958B00E08B82 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D313CC82072958B00E08B82 /* UserCell.swift */; };
 		8D313CCB20729BA900E08B82 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D313CCA20729BA900E08B82 /* SearchTableViewController.swift */; };
+		8D313CCD2072A08100E08B82 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D313CCC2072A08100E08B82 /* Environment.swift */; };
+		8D313CCF2072A0E100E08B82 /* EnvironmentImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D313CCE2072A0E100E08B82 /* EnvironmentImp.swift */; };
+		8D313CD12072A1CC00E08B82 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D313CD02072A1CC00E08B82 /* NetworkService.swift */; };
 		C782AD79ABEF42F716A8EB80 /* Pods_github_searchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8634DF3B9EFC517EBAA5490A /* Pods_github_searchTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +61,9 @@
 		8D313CAD20728A9900E08B82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D313CC82072958B00E08B82 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		8D313CCA20729BA900E08B82 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		8D313CCC2072A08100E08B82 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		8D313CCE2072A0E100E08B82 /* EnvironmentImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentImp.swift; sourceTree = "<group>"; };
+		8D313CD02072A1CC00E08B82 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		BA6354162EA6367EF2B1C1F0 /* Pods-github-searchTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-github-searchTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-github-searchTests/Pods-github-searchTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DF09AFE64AA8B0CDE847FA10 /* Pods-github-searchUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-github-searchUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-github-searchUITests/Pods-github-searchUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E67AD9F669CC97EDC33AB5C4 /* Pods-github-search.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-github-search.debug.xcconfig"; path = "Pods/Target Support Files/Pods-github-search/Pods-github-search.debug.xcconfig"; sourceTree = "<group>"; };
@@ -182,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				8D313CC62072951F00E08B82 /* Config */,
+				8D313CD02072A1CC00E08B82 /* NetworkService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -189,6 +196,8 @@
 		8D313CC62072951F00E08B82 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				8D313CCC2072A08100E08B82 /* Environment.swift */,
+				8D313CCE2072A0E100E08B82 /* EnvironmentImp.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -522,7 +531,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D313CC92072958B00E08B82 /* UserCell.swift in Sources */,
+				8D313CCF2072A0E100E08B82 /* EnvironmentImp.swift in Sources */,
+				8D313CCD2072A08100E08B82 /* Environment.swift in Sources */,
 				8D313C8C20728A9900E08B82 /* AppDelegate.swift in Sources */,
+				8D313CD12072A1CC00E08B82 /* NetworkService.swift in Sources */,
 				8D313CCB20729BA900E08B82 /* SearchTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
