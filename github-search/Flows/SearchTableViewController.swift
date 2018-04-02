@@ -10,7 +10,8 @@ import UIKit
 
 class SearchTableViewController: UITableViewController, UISearchResultsUpdating {
 
-    var temp = ["Gi1", "Gi2", "Gi3"]
+    let searchService = SearchService()
+    var temp = [Users]()
     var searchController: UISearchController!
     
     override func viewDidLoad() {
@@ -29,7 +30,13 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     }
 
     func updateSearchResults(for searchController: UISearchController) {
-        
+        if let searchText = searchController.searchBar.text {
+            searchService.dowloadUsers(searchText: searchText) { [weak self]
+            responce in
+            self?.temp = responce
+            self?.tableView?.reloadData()
+            }
+        }
     }
     
 
@@ -49,7 +56,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         let cellIdentifier = "UserCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         
-        cell.textLabel?.text = temp[indexPath.row]
+        cell.textLabel?.text = temp[indexPath.row].name
         
         return cell
     }

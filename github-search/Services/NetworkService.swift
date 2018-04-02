@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import  Moya
+import Moya
 
 enum  NetworkService {
     case getUsers(name: String)
