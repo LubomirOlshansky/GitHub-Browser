@@ -1,46 +1,58 @@
 //
 //  SearchTableViewController.swift
-//  
+//  github-search
 //
 //  Created by Lubomir Olshansky on 02/04/2018.
+//  Copyright © 2018 Lubomir Olshansky. All rights reserved.
 //
 
 import UIKit
 
-class SearchTableViewController: UITableViewController {
+class SearchTableViewController: UITableViewController, UISearchResultsUpdating {
 
+    var temp = ["Gi1", "Gi2", "Gi3"]
+    var searchController: UISearchController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+//        navigationController?.hidesBarsWhenKeyboardAppears = true
+        navigationController?.isNavigationBarHidden = true
+        // Adding a search bar
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search users or repositories..."
+        tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.barTintColor = .white
+        searchController.searchBar.backgroundImage = UIImage()
     }
 
-
-    // MARK: - Table view data source
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+    
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        
+          return 1
     }
+    
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        
+         return temp.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        
+        let cellIdentifier = "UserCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        
+        cell.textLabel?.text = temp[indexPath.row]
+        
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
