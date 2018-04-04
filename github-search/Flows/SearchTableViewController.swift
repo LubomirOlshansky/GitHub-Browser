@@ -39,7 +39,10 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
 //            self?.temp = responce
 //            self?.tableView?.reloadData()
 //        }
-
+//        searchService.loadUsersAndRepos(name: "ololo") { [weak self]
+//                                responce in
+//                                print(responce)
+//                                }
 
     
 
@@ -50,9 +53,10 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
 func updateSearchResults(for searchController: UISearchController) {
             if let searchText = searchController.searchBar.text {
                 if searchText.count > 2 {
-                searchService.loadRepositories(name: searchText) { [weak self]
+                searchService.loadUsersAndRepos(name: searchText) { [weak self]
                     responce in
                     print(responce)
+                    print("AAAAAAAAAAAAAAAAAAAAAAAA")
                     self?.temp = responce
                     self?.tableView?.reloadData()
                     }

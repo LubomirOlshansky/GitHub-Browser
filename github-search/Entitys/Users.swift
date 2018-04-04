@@ -34,4 +34,7 @@ struct Base {
     init(repo: Repo) {
         id = repo.id
     }
+    init(user: User) {
+          id = user.id
+    }
 }
