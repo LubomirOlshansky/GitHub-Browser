@@ -9,38 +9,77 @@
 import Foundation
 import Moya
 
-struct SearchService {
+class SearchService: UIViewController {
 
-     let userProvider = MoyaProvider<NetworkService>()
+    let userProvider = MoyaProvider<NetworkService>()
     
-    typealias loadPhotoDataCompletion = ([Users]) -> Void
     
-    func dowloadUsers(searchText: String, completion: @escaping loadPhotoDataCompletion) {
-        
-        userProvider.request(.getUsers(name: searchText)) { (result) in
-            
+    typealias loadRepositoriesDataComplition = ([Base]) -> Void
+    
+    
+    
+    func loadRepositories(name: String, completion: @escaping loadRepositoriesDataComplition) {
+        userProvider.request(.getRepos(repoName: name)) { (result) in
             switch result {
             case .success(let response):
-                print(response)
-                let users = try! JSONDecoder().decode([Users].self, from: response.data)
-                let usersArray = users
-                print(usersArray)
-                completion(usersArray)
+                let data = response.data
+                let statusCode = response.statusCode
+                print(data)
+                print(statusCode)
+                
+                let repositories = try! JSONDecoder().decode(Repositories.self, from: response.data)
+                print("data delivered")
+                let repositoriesConverted = repositories.items
+                var base = [Base]()
+                repositoriesConverted.forEach {
+                    base.append(Base(repo: $0))
+                }
+                completion(base)
+                
+                
             case .failure(let error):
                 print(error)
-                }
             }
-        
+        }
     }
-    func downloadRepos(completion: @escaping () -> () ) {
+    
+    
+    
+    
+    
+    
+    
+//    func loadPhotoData(name: String, completion: @escaping loadPhotoDataCompletion) {
+//        
+//        let path = "/search/users"
+//        let parameters: Parameters = [
+//            "q": name,
+//            ]
+//        let url = baseUrl+path
+//        
+//        Alamofire.request(url, method: .get, parameters: parameters).responseJSON(queue: .global(qos: .userInteractive))
+//        { responce in
+//
+//            guard let data = responce.data else { return }
+//                var statusCode = response.response?.statusCode
+//            
+//            do {
+//                print(data)
+//                let orderDecoded = try JSONDecoder().decode(Users.self, from: data)
+////                print(orderDecoded.items[0].login)
+//                print(orderDecoded)
+//                DispatchQueue.main.async {
+//                    completion([orderDecoded])
+//                    return
+//                }
+//            } catch let jsonErr {
+//                print(data)
+//                print("Error serializing json:", jsonErr)
+//            }
+//        }
+//        
         
         
-        //        Alamofire.request(router.groupList()).responseData { response in
-        //            guard let data = response.value else { return }
-        //            let json = JSON(data: data)
-        //            let groups = json["response"]["items"].array?.flatMap { Group(json: $0) } ?? []
-        //            Realm.replaceAllObjectOfType(toNewObjects: groups)
-        //            completion()
-        //        }
-    }
+        
+
 }
