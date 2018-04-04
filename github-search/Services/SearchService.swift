@@ -15,7 +15,6 @@ class SearchService: UIViewController {
     
 //    var repos1 =  [Repo]()
 //    var users1 = [User]()
-    var searchResponce = [Base]()
     let dispatchGroup = DispatchGroup()
     typealias loadRepositoriesDataComplition = ([Repo]) -> Void
     typealias loadUsersDataComplition = ([User]) -> Void
@@ -26,14 +25,15 @@ class SearchService: UIViewController {
     func loadRepositories(name: String, completion: @escaping loadRepositoriesDataComplition) {
         dispatchGroup.enter()
         userProvider.request(.getRepos(repoName: name)) { (result) in
+        
             switch result {
             case .success(let response):
-                let data = response.data
-                let statusCode = response.statusCode
-                print(data)
-                print(statusCode)
-                
-                let repositories = try! JSONDecoder().decode(Repositories.self, from: response.data)
+//                let data = response.data
+//                let statusCode = response.statusCode
+//                print(data)
+//                print(statusCode)
+
+                guard let repositories = try? JSONDecoder().decode(Repositories.self, from: response.data) else { return }
                 print("data delivered")
 
 //                var base = [Base]()
@@ -53,12 +53,12 @@ class SearchService: UIViewController {
         userProvider.request(.getUsers(userName: name)) { (result) in
             switch result {
             case .success(let response):
-                let data = response.data
-                let statusCode = response.statusCode
-                print(data)
-                print(statusCode)
+//                let data = response.data
+//                let statusCode = response.statusCode
+//                print(data)
+//                print(statusCode)
                 
-                let users = try! JSONDecoder().decode(Users.self, from: response.data)
+                guard let users = try? JSONDecoder().decode(Users.self, from: response.data) else { return }
                 print("data delivered")
 //                var base1 = [Base]()
 //                usersConverted.forEach {
@@ -74,32 +74,24 @@ class SearchService: UIViewController {
     }
     
     func loadUsersAndRepos(name: String, completion: @escaping loadUsersAndReposDataComplition) {
-        dispatchGroup.enter()
-        print("entered")
-            self.loadRepositories(name: name) { [weak self]
+        var searchResponce = [Base]()
+            self.loadRepositories(name: name) {
             responce in
-//            print(responce)
-                responce.forEach {
-                    self?.searchResponce.append(Base(repo: $0))
-                }
-                self?.dispatchGroup.leave()
-        }
-            self.loadUsers(name: name) { [weak self]
-            responce in
-//            print(responce)
             responce.forEach {
-            self?.searchResponce.append(Base(user: $0))
+                searchResponce.append(Base(repo: $0))
                 }
         }
-         print("leave")
+            self.loadUsers(name: name) {
+            responce in
+            responce.forEach {
+                searchResponce.append(Base(user: $0))
+                }
+        }
   
         dispatchGroup.notify(queue: DispatchQueue.main) {
-            
-           
-//            print(self.searchResponce)
-            completion(self.searchResponce)
+            completion(searchResponce)
             print("notify")
-        }
+    }
 }
     
     

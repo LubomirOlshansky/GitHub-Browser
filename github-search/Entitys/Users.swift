@@ -31,10 +31,16 @@ struct Repo: Decodable {
 
 struct Base {
     var id: Int
+    var name: String
+    var isUser: Bool
     init(repo: Repo) {
         id = repo.id
+        name = repo.name
+        isUser = false
     }
     init(user: User) {
           id = user.id
+          name = user.login
+          isUser = true
     }
 }

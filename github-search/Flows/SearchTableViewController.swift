@@ -53,11 +53,12 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
 func updateSearchResults(for searchController: UISearchController) {
             if let searchText = searchController.searchBar.text {
                 if searchText.count > 2 {
+                    print(searchText)
                 searchService.loadUsersAndRepos(name: searchText) { [weak self]
                     responce in
                     print(responce)
                     print("AAAAAAAAAAAAAAAAAAAAAAAA")
-                    self?.temp = responce
+                    self?.temp = responce.sorted(by: {$0.id < $1.id})
                     self?.tableView?.reloadData()
                     }
         }
@@ -80,7 +81,7 @@ func updateSearchResults(for searchController: UISearchController) {
         let cellIdentifier = "UserCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         
-        cell.textLabel?.text = String(temp[indexPath.row].id)
+        cell.textLabel?.text = String(temp[indexPath.row].name)
         return cell
     }
 }
