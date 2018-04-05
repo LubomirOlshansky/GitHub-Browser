@@ -24,16 +24,9 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         super.viewDidLoad()
         
 //        navigationController?.hidesBarsWhenKeyboardAppears = true
-        navigationController?.isNavigationBarHidden = true
+//        navigationController?.isNavigationBarHidden = true
         setUpSearchBar()
-        // Adding a search bar
-//        searchController = UISearchController(searchResultsController: nil)
-//        searchController.searchResultsUpdater = self
-//        searchController.dimsBackgroundDuringPresentation = false
-//        searchController.searchBar.placeholder = "Search users or repositories..."
-//        tableView.tableHeaderView = searchController.searchBar
-//        searchController.searchBar.barTintColor = .white
-//        searchController.searchBar.backgroundImage = UIImage()
+
         
     }
     
@@ -78,7 +71,12 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         let cellIdentifier = "UserCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         
-        cell.textLabel?.text = String(temp[indexPath.row].name)
+        cell.textLabel?.text = temp[indexPath.row].name
+        if temp[indexPath.row].isUser == true {
+               cell.detailTextLabel?.text = "user"
+        } else {
+             cell.detailTextLabel?.text = "repository"
+        }
         return cell
     }
 }
