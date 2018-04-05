@@ -25,6 +25,19 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         
 //        navigationController?.hidesBarsWhenKeyboardAppears = true
         navigationController?.isNavigationBarHidden = true
+        setUpSearchBar()
+        // Adding a search bar
+//        searchController = UISearchController(searchResultsController: nil)
+//        searchController.searchResultsUpdater = self
+//        searchController.dimsBackgroundDuringPresentation = false
+//        searchController.searchBar.placeholder = "Search users or repositories..."
+//        tableView.tableHeaderView = searchController.searchBar
+//        searchController.searchBar.barTintColor = .white
+//        searchController.searchBar.backgroundImage = UIImage()
+        
+    }
+    
+    func setUpSearchBar() {
         // Adding a search bar
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
@@ -33,31 +46,15 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         tableView.tableHeaderView = searchController.searchBar
         searchController.searchBar.barTintColor = .white
         searchController.searchBar.backgroundImage = UIImage()
-//        searchService.loadRepositories(searchText: searchText) { [weak self]
-//            responce in
-//           print(responce)
-//            self?.temp = responce
-//            self?.tableView?.reloadData()
-//        }
-//        searchService.loadUsersAndRepos(name: "ololo") { [weak self]
-//                                responce in
-//                                print(responce)
-//                                }
-
+    }
     
-
-    
-  
-}
-    
-func updateSearchResults(for searchController: UISearchController) {
+    func updateSearchResults(for searchController: UISearchController) {
             if let searchText = searchController.searchBar.text {
                 if searchText.count > 2 {
                     print(searchText)
                 searchService.loadUsersAndRepos(name: searchText) { [weak self]
                     responce in
                     print(responce)
-                    print("AAAAAAAAAAAAAAAAAAAAAAAA")
                     self?.temp = responce.sorted(by: {$0.id < $1.id})
                     self?.tableView?.reloadData()
                     }
