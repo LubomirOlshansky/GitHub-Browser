@@ -84,4 +84,4 @@ class SearchService: UIViewController {
             print("notify")
         }
     }
-}
+    }
