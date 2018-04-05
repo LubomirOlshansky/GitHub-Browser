@@ -13,8 +13,6 @@ class SearchService: UIViewController {
 
     let userProvider = MoyaProvider<NetworkService>()
     
-//    var repos1 =  [Repo]()
-//    var users1 = [User]()
     let dispatchGroup = DispatchGroup()
     typealias loadRepositoriesDataComplition = ([Repo]) -> Void
     typealias loadUsersDataComplition = ([User]) -> Void
@@ -36,10 +34,6 @@ class SearchService: UIViewController {
                 guard let repositories = try? JSONDecoder().decode(Repositories.self, from: response.data) else { return }
                 print("data delivered")
 
-//                var base = [Base]()
-//                repositoriesConverted.forEach {
-//                    base.append(Base(repo: $0))
-//                }
                 completion(repositories.items)
                 self.dispatchGroup.leave()
                 
@@ -60,10 +54,7 @@ class SearchService: UIViewController {
                 
                 guard let users = try? JSONDecoder().decode(Users.self, from: response.data) else { return }
                 print("data delivered")
-//                var base1 = [Base]()
-//                usersConverted.forEach {
-//                    base1.append(Base(user: $0))
-//                }
+                
                 completion(users.items)
                  self.dispatchGroup.leave()
                 
@@ -91,43 +82,6 @@ class SearchService: UIViewController {
         dispatchGroup.notify(queue: DispatchQueue.main) {
             completion(searchResponce)
             print("notify")
+        }
     }
-}
-    
-    
-    
-    
-//    func loadPhotoData(name: String, completion: @escaping loadPhotoDataCompletion) {
-//        
-//        let path = "/search/users"
-//        let parameters: Parameters = [
-//            "q": name,
-//            ]
-//        let url = baseUrl+path
-//        
-//        Alamofire.request(url, method: .get, parameters: parameters).responseJSON(queue: .global(qos: .userInteractive))
-//        { responce in
-//
-//            guard let data = responce.data else { return }
-//                var statusCode = response.response?.statusCode
-//            
-//            do {
-//                print(data)
-//                let orderDecoded = try JSONDecoder().decode(Users.self, from: data)
-////                print(orderDecoded.items[0].login)
-//                print(orderDecoded)
-//                DispatchQueue.main.async {
-//                    completion([orderDecoded])
-//                    return
-//                }
-//            } catch let jsonErr {
-//                print(data)
-//                print("Error serializing json:", jsonErr)
-//            }
-//        }
-//        
-        
-        
-        
-
 }

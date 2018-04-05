@@ -9,17 +9,14 @@
 import UIKit
 import Moya
 
-
-
-
 class SearchTableViewController: UITableViewController, UISearchResultsUpdating {
 
     
     let searchService = SearchService()
     var temp = [Base]()
-     let userProvider = MoyaProvider<NetworkService>()
+    let userProvider = MoyaProvider<NetworkService>()
     var searchController: UISearchController!
-    let kilo = "github"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,7 +24,6 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
 //        navigationController?.isNavigationBarHidden = true
         setUpSearchBar()
 
-        
     }
     
     func setUpSearchBar() {

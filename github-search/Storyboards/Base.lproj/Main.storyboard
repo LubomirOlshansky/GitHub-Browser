@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Zul-5k-LCx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qdM-Tc-Mym">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -79,7 +79,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="BC5-Lx-Ubr">
                                                 <rect key="frame" x="0.0" y="0.0" width="179.5" height="43"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVj-wo-pTm">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVj-wo-pTm" userLabel="FollowersCount">
                                                         <rect key="frame" x="0.0" y="0.0" width="10.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -96,7 +96,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="HyR-VE-9rN">
                                                 <rect key="frame" x="179.5" y="0.0" width="179.5" height="43"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tl-kS-RzE">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tl-kS-RzE" userLabel="StarsCount">
                                                         <rect key="frame" x="0.0" y="0.0" width="10.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -144,9 +144,9 @@
                         <viewLayoutGuide key="safeArea" id="C00-fl-ZhQ"/>
                     </view>
                     <connections>
-                        <outlet property="followers" destination="bGc-hD-Nj9" id="KHc-ht-7Bh"/>
-                        <outlet property="nameLabel" destination="YSU-mx-jDz" id="4QW-1c-RNX"/>
-                        <outlet property="stars" destination="sVj-3Y-0Jr" id="xaX-OH-agg"/>
+                        <outlet property="followers" destination="EVj-wo-pTm" id="TcG-oa-tmM"/>
+                        <outlet property="nameLabel" destination="EVj-wo-pTm" id="5CN-mf-dvm"/>
+                        <outlet property="stars" destination="1tl-kS-RzE" id="yOh-JG-DEx"/>
                         <outlet property="userPhoto" destination="g8f-Wy-AQQ" id="Jqb-kG-Tp6"/>
                     </connections>
                 </viewController>

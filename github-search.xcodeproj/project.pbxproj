@@ -12,6 +12,11 @@
 		8D1616E52072ACBC00A189EC /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1616E42072ACBC00A189EC /* SearchService.swift */; };
 		8D1616E72072B0EA00A189EC /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1616E62072B0EA00A189EC /* Users.swift */; };
 		8D1616EB207672A600A189EC /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1616EA207672A600A189EC /* UserDetailViewController.swift */; };
+		8D1616ED20767DE300A189EC /* Repos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1616EC20767DE200A189EC /* Repos.swift */; };
+		8D1616F120767E0700A189EC /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1616F020767E0700A189EC /* Base.swift */; };
+		8D1616F320767E1900A189EC /* UserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1616F220767E1900A189EC /* UserDetail.swift */; };
+		8D1616F520767EAB00A189EC /* UserDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1616F420767EAB00A189EC /* UserDetailService.swift */; };
+		8D1616F720767EFF00A189EC /* UserRepos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1616F620767EFF00A189EC /* UserRepos.swift */; };
 		8D313C8C20728A9900E08B82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D313C8B20728A9900E08B82 /* AppDelegate.swift */; };
 		8D313C9120728A9900E08B82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D313C8F20728A9900E08B82 /* Main.storyboard */; };
 		8D313C9320728A9900E08B82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D313C9220728A9900E08B82 /* Assets.xcassets */; };
@@ -53,6 +58,11 @@
 		8D1616E42072ACBC00A189EC /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		8D1616E62072B0EA00A189EC /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		8D1616EA207672A600A189EC /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		8D1616EC20767DE200A189EC /* Repos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repos.swift; sourceTree = "<group>"; };
+		8D1616F020767E0700A189EC /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
+		8D1616F220767E1900A189EC /* UserDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetail.swift; sourceTree = "<group>"; };
+		8D1616F420767EAB00A189EC /* UserDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailService.swift; sourceTree = "<group>"; };
+		8D1616F620767EFF00A189EC /* UserRepos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepos.swift; sourceTree = "<group>"; };
 		8D313C8820728A9900E08B82 /* github-search.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "github-search.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D313C8B20728A9900E08B82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D313C9020728A9900E08B82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -187,6 +197,10 @@
 			isa = PBXGroup;
 			children = (
 				8D1616E62072B0EA00A189EC /* Users.swift */,
+				8D1616EC20767DE200A189EC /* Repos.swift */,
+				8D1616F020767E0700A189EC /* Base.swift */,
+				8D1616F220767E1900A189EC /* UserDetail.swift */,
+				8D1616F620767EFF00A189EC /* UserRepos.swift */,
 			);
 			path = Entitys;
 			sourceTree = "<group>";
@@ -197,6 +211,7 @@
 				8D313CC62072951F00E08B82 /* Config */,
 				8D313CD02072A1CC00E08B82 /* NetworkService.swift */,
 				8D1616E42072ACBC00A189EC /* SearchService.swift */,
+				8D1616F420767EAB00A189EC /* UserDetailService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -540,14 +555,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D1616E72072B0EA00A189EC /* Users.swift in Sources */,
+				8D1616F520767EAB00A189EC /* UserDetailService.swift in Sources */,
+				8D1616F320767E1900A189EC /* UserDetail.swift in Sources */,
 				8D313CC92072958B00E08B82 /* UserCell.swift in Sources */,
 				8D1616EB207672A600A189EC /* UserDetailViewController.swift in Sources */,
 				8D313CCF2072A0E100E08B82 /* EnvironmentImp.swift in Sources */,
 				8D313CCD2072A08100E08B82 /* Environment.swift in Sources */,
+				8D1616ED20767DE300A189EC /* Repos.swift in Sources */,
 				8D313C8C20728A9900E08B82 /* AppDelegate.swift in Sources */,
 				8D1616E52072ACBC00A189EC /* SearchService.swift in Sources */,
 				8D313CD12072A1CC00E08B82 /* NetworkService.swift in Sources */,
 				8D313CCB20729BA900E08B82 /* SearchTableViewController.swift in Sources */,
+				8D1616F720767EFF00A189EC /* UserRepos.swift in Sources */,
+				8D1616F120767E0700A189EC /* Base.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
