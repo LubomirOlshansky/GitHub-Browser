@@ -52,11 +52,10 @@ class UserDetailService: UIViewController {
                 print(data)
                 print(statusCode)
                 
-                guard let userReposiroties = try? JSONDecoder().decode(UserRepos.self, from: response.data) else { return }
+                guard let userReposiroties = try? JSONDecoder().decode([UserRepos].self, from: response.data) else { return }
                 print("data delivered")
-                print(userReposiroties)
                 DispatchQueue.main.async {
-                    completion([userReposiroties])
+                    completion(userReposiroties)
                 }
                 
             case .failure(let error):

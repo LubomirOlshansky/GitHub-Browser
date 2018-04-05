@@ -44,7 +44,12 @@ class UserDetailViewController: UIViewController {
         }
         userDetailService.loadUserRepos(name: self.user) { [weak self]
             responce in
-            print(responce)
+            var starsCount = 0
+            for repo in responce {
+                starsCount += repo.stargazers_count
+            }
+            self?.stars.text = String(starsCount)
+        
         }
     }
 }

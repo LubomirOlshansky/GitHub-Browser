@@ -79,6 +79,7 @@ class SearchService: UIViewController {
                 }
         }
   
+    //chain asynchronous operations callbacks with dispatchGroup
         dispatchGroup.notify(queue: DispatchQueue.main) {
             completion(searchResponce)
             print("notify")

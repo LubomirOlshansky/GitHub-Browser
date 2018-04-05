@@ -9,5 +9,5 @@
 import Foundation
 
 struct UserRepos: Decodable {
-    var id: Int
+    var stargazers_count: Int
 }

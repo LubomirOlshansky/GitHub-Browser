@@ -48,6 +48,8 @@ extension NetworkService: TargetType {
         }
     }
     
+    
+    //For unauthenticated requests, the rate limit allows to make only 10 requests per minute, with client_id/client_secret - up to 30
     var task: Task {
         switch self {
         case .getUsers(let userName), .getRepos(let userName):

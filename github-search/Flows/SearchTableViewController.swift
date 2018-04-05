@@ -23,6 +23,9 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
 //        navigationController?.hidesBarsWhenKeyboardAppears = true
 //        navigationController?.isNavigationBarHidden = true
         setUpSearchBar()
+        
+        //the search bar from the first view controller is visible in the 2nd view controller after the push a new view controller to the navigation stack, his solved the problem for me
+        self.definesPresentationContext = true
 
     }
     
