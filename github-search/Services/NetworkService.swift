@@ -12,7 +12,7 @@ import Moya
 enum  NetworkService {
     case getUsers(userName: String)
     case getRepos(repoName: String)
-    case getUserRep(id: String)
+    case getUserRep(name: String)
     case getUserInfo(userName: String)
 }
 
@@ -29,8 +29,8 @@ extension NetworkService: TargetType {
         case .getRepos(_):
             return "/search/repositories"
             
-        case .getUserRep(let id):
-            return "/users/\(id)/repos"
+        case .getUserRep(let name):
+            return "/users/\(name)/repos"
             
         case .getUserInfo(let name):
             return "/users/\(name)"

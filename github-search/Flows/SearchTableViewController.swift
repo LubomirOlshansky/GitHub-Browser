@@ -9,9 +9,9 @@
 import UIKit
 import Moya
 
-class SearchTableViewController: UITableViewController, UISearchResultsUpdating {
+class SearchTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
 
-    
+   
     let searchService = SearchService()
     var temp = [Base]()
     let userProvider = MoyaProvider<NetworkService>()
@@ -24,36 +24,43 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
 //        navigationController?.isNavigationBarHidden = true
         setUpSearchBar()
         
-        //the search bar from the first view controller is visible in the 2nd view controller after the push a new view controller to the navigation stack, his solved the problem for me
+        //the search bar from the first view controller is visible in the 2nd view controller after the push a new view controller to the navigation stack, this solved the problem
         self.definesPresentationContext = true
 
     }
     
     func setUpSearchBar() {
         // Adding a search bar
+        
         searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search users or repositories..."
         tableView.tableHeaderView = searchController.searchBar
+        searchController.searchResultsUpdater = self
+//        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search users or repositories..."
         searchController.searchBar.barTintColor = .white
         searchController.searchBar.backgroundImage = UIImage()
     }
     
+    
+    
     func updateSearchResults(for searchController: UISearchController) {
-            if let searchText = searchController.searchBar.text {
-                if searchText.count > 2 {
-                    print(searchText)
-                searchService.loadUsersAndRepos(name: searchText) { [weak self]
-                    responce in
-                    print(responce)
-                    self?.temp = responce.sorted(by: {$0.id < $1.id})
-                    self?.tableView?.reloadData()
-                    }
+
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.reload(_:)), object: nil)
+        self.perform(#selector(self.reload), with: nil, afterDelay: 0.5)
+    }
+ 
+
+    @objc func reload(_ searchBar: UISearchBar) {
+         if let searchText = searchController.searchBar.text, searchText.count > 2 {
+            print ("request send")
+        searchService.loadUsersAndRepos(name: searchText) { [weak self]
+            responce in
+            print(responce)
+            self?.temp = responce.sorted(by: {$0.id < $1.id})
+            self?.tableView?.reloadData()
         }
     }
 }
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         
           return 1

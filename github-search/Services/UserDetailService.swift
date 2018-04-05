@@ -24,10 +24,10 @@ class UserDetailService: UIViewController {
             
             switch result {
             case .success(let response):
-//                                let data = response.data
-//                                let statusCode = response.statusCode
-//                                print(data)
-//                                print(statusCode)
+//                  let data = response.data
+//                  let statusCode = response.statusCode
+//                  print(data)
+//                  print(statusCode)
                 
                 guard let userDetail = try? JSONDecoder().decode(UserDetail.self, from: response.data) else { return }
 //                print("data delivered")
@@ -43,7 +43,7 @@ class UserDetailService: UIViewController {
     func loadUserRepos(name: String, completion: @escaping loadUserReposDataComplition) {
         
         //fix id to name
-        userProvider.request(.getUserRep(id: name)) { (result) in
+        userProvider.request(.getUserRep(name: name)) { (result) in
             
             switch result {
             case .success(let response):
