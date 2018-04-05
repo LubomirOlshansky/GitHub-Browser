@@ -72,11 +72,29 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         
         cell.textLabel?.text = temp[indexPath.row].name
+        print(temp[indexPath.row].id)
         if temp[indexPath.row].isUser == true {
                cell.detailTextLabel?.text = "user"
         } else {
              cell.detailTextLabel?.text = "repository"
         }
         return cell
+}
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if temp[indexPath.row].isUser == true {
+            performSegue(withIdentifier: "toDatailVC", sender: indexPath)
+        } else {
+            return
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDatailVC" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let destinationController = segue.destination as! UserDetailViewController
+                destinationController.user = temp[indexPath.row].name
+            }
+        }
     }
 }

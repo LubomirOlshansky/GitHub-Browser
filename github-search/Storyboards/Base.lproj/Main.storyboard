@@ -67,7 +67,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="18430493" translatesAutoresizingMaskIntoConstraints="NO" id="g8f-Wy-AQQ" userLabel="Header Image View">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="18430493" translatesAutoresizingMaskIntoConstraints="NO" id="g8f-Wy-AQQ" userLabel="User Photo">
                                 <rect key="frame" x="0.0" y="64" width="375" height="390"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDU-Ev-dTe" userLabel="User Info View">
@@ -143,6 +143,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="C00-fl-ZhQ"/>
                     </view>
+                    <connections>
+                        <outlet property="followers" destination="bGc-hD-Nj9" id="KHc-ht-7Bh"/>
+                        <outlet property="nameLabel" destination="YSU-mx-jDz" id="4QW-1c-RNX"/>
+                        <outlet property="stars" destination="sVj-3Y-0Jr" id="xaX-OH-agg"/>
+                        <outlet property="userPhoto" destination="g8f-Wy-AQQ" id="Jqb-kG-Tp6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pKK-OV-3Bf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

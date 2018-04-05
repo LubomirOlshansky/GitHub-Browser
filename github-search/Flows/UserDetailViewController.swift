@@ -10,8 +10,16 @@ import UIKit
 
 class UserDetailViewController: UIViewController {
 
+    @IBOutlet weak var userPhoto: UIImageView!
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var followers: UILabel!
+    @IBOutlet weak var stars: UILabel!
+    
+    var user: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.nameLabel.text = user
         
     }
 
