@@ -12,7 +12,6 @@ import Moya
 class SearchService: UIViewController {
 
     let userProvider = MoyaProvider<NetworkService>()
-    
     let dispatchGroup = DispatchGroup()
     typealias loadRepositoriesDataComplition = ([Repo]) -> Void
     typealias loadUsersDataComplition = ([User]) -> Void
@@ -26,13 +25,8 @@ class SearchService: UIViewController {
         
             switch result {
             case .success(let response):
-//                let data = response.data
-//                let statusCode = response.statusCode
-//                print(data)
-//                print(statusCode)
 
                 guard let repositories = try? JSONDecoder().decode(Repositories.self, from: response.data) else { return }
-                print("data delivered")
 
                 completion(repositories.items)
                 self.dispatchGroup.leave()
@@ -47,16 +41,11 @@ class SearchService: UIViewController {
         userProvider.request(.getUsers(userName: name)) { (result) in
             switch result {
             case .success(let response):
-//                let data = response.data
-//                let statusCode = response.statusCode
-//                print(data)
-//                print(statusCode)
                 
                 guard let users = try? JSONDecoder().decode(Users.self, from: response.data) else { return }
-                print("data delivered")
                 
                 completion(users.items)
-                 self.dispatchGroup.leave()
+                self.dispatchGroup.leave()
                 
             case .failure(let error):
                 print(error)
@@ -82,7 +71,6 @@ class SearchService: UIViewController {
     //chain asynchronous operations callbacks with dispatchGroup
         dispatchGroup.notify(queue: DispatchQueue.main) {
             completion(searchResponce)
-            print("notify")
         }
     }
-    }
+}

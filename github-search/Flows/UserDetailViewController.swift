@@ -10,6 +10,7 @@ import UIKit
 
 class UserDetailViewController: UIViewController {
 
+    //MARK: Outlet
     @IBOutlet weak var userPhoto: UIImageView!
     @IBOutlet weak var followers: UILabel!
     @IBOutlet weak var stars: UILabel!
@@ -20,15 +21,25 @@ class UserDetailViewController: UIViewController {
         }
     }
     
-    
+    //MARK: Properties
     let userDetailService = UserDetailService()
     var user: String = ""
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.userName.text = self.user
+        loadUserImageAndFollowers()
+        loadUserStars()
+        
+    }
+    
+    //MARK: Methods
+     private func loadUserImageAndFollowers() {
         userDetailService.loadUserDetail(name: self.user) { [weak self]
             responce in
-            print(responce)
+            
             self?.followers.text = String(responce.1)
             if let imageURL = URL(string: responce.0) {
                 DispatchQueue.global().async {
@@ -42,6 +53,8 @@ class UserDetailViewController: UIViewController {
                 }
             }
         }
+    }
+     private func loadUserStars() {
         userDetailService.loadUserRepos(name: self.user) { [weak self]
             responce in
             //sum the total count of stars
@@ -50,10 +63,9 @@ class UserDetailViewController: UIViewController {
                 starsCount += repo.stargazers_count
             }
             self?.stars.text = String(starsCount)
-        
+            
         }
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

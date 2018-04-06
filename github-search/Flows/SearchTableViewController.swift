@@ -25,7 +25,6 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
     // MARK: UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-       navigationController?.setNavigationBarHidden(true, animated: true)
         tableView.backgroundView = emptySearchResult
         tableView.backgroundView?.isHidden = true
         setUpSearchBar()
@@ -65,15 +64,12 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
          if let searchText = searchController.searchBar.text, searchText.count > 1 {
         searchService.loadUsersAndRepos(name: searchText) { [weak self]
             responce in
-            print(responce)
+
             self?.temp = responce.sorted(by: {$0.id < $1.id})
             
             //if no results found, show background view with message
             let isNotFound = self?.temp.count == 0
-            if isNotFound == true {
-                self?.tableView.separatorStyle = .none
-            } else {
-                self?.tableView.separatorStyle = .singleLine }
+            self?.tableView.separatorStyle =  isNotFound ? .none : .singleLine
             self?.emptySearchResult.isHidden = !isNotFound
             
             self?.tableView?.reloadData()
@@ -95,18 +91,10 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
         
         let cellIdentifier = "UserCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        if temp.count > 0 {
-            cell.textLabel?.text = temp[indexPath.row].name
-        } else {
-            tableView.separatorStyle = .none
-        }
+     
         cell.textLabel?.text = temp[indexPath.row].name
-        print(temp[indexPath.row].id)
-        if temp[indexPath.row].isUser == true {
-               cell.detailTextLabel?.text = "user"
-        } else {
-             cell.detailTextLabel?.text = "repository"
-        }
+        cell.detailTextLabel?.text = temp[indexPath.row].isUser ? "user" : "repository"
+        
         return cell
 }
     

@@ -86,7 +86,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="18430493" translatesAutoresizingMaskIntoConstraints="NO" id="g8f-Wy-AQQ" userLabel="User Photo">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g8f-Wy-AQQ" userLabel="User Photo">
                                 <rect key="frame" x="0.0" y="64" width="375" height="390"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDU-Ev-dTe" userLabel="User Info View">
@@ -193,7 +193,4 @@
             <point key="canvasLocation" x="-494" y="45"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="18430493" width="420" height="420"/>
-    </resources>
 </document>
