@@ -11,6 +11,7 @@ import Foundation
 struct Repositories: Decodable {
     var items: [Repo]
 }
+
 struct Repo: Decodable {
     var name: String
     var id: Int

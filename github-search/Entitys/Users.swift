@@ -11,6 +11,7 @@
 struct Users: Decodable {
     var items: [User]
 }
+
 struct User: Decodable {
     var login: String
     var id: Int

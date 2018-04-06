@@ -44,6 +44,7 @@ class UserDetailViewController: UIViewController {
         }
         userDetailService.loadUserRepos(name: self.user) { [weak self]
             responce in
+            //sum the total count of stars
             var starsCount = 0
             for repo in responce {
                 starsCount += repo.stargazers_count

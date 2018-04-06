@@ -52,10 +52,29 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="MMw-No-k24"/>
                     <connections>
+                        <outlet property="emptySearchResult" destination="y8M-vj-lKP" id="Kdl-qk-Fih"/>
                         <segue destination="qdM-Tc-Mym" kind="show" identifier="toDatailVC" id="ZM0-nR-azS"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GvS-le-ntD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="y8M-vj-lKP">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="500"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Qu-2k-X7j">
+                            <rect key="frame" x="124" y="239.5" width="127" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="5Qu-2k-X7j" firstAttribute="centerX" secondItem="y8M-vj-lKP" secondAttribute="centerX" id="6U2-Qg-q9h"/>
+                        <constraint firstItem="5Qu-2k-X7j" firstAttribute="centerY" secondItem="y8M-vj-lKP" secondAttribute="centerY" id="JPK-i1-sAH"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="4cL-jU-LQY"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="303.19999999999999" y="44.527736131934034"/>
         </scene>
