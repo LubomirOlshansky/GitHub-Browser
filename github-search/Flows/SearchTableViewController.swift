@@ -25,6 +25,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
     // MARK: UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+       navigationController?.setNavigationBarHidden(true, animated: true)
         tableView.backgroundView = emptySearchResult
         tableView.backgroundView?.isHidden = true
         setUpSearchBar()
@@ -32,6 +33,12 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
         //The search bar from the first view controller is visible in the 2nd view controller
         //after the push a new view controller to the navigation stack, this solved the problem
         self.definesPresentationContext = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     //MARK: Methods
