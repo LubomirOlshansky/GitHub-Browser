@@ -61,7 +61,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
             print(responce)
             self?.temp = responce.sorted(by: {$0.id < $1.id})
             
-            //if no results found, show background view with massage
+            //if no results found, show background view with message
             let isNotFound = self?.temp.count == 0
             if isNotFound == true {
                 self?.tableView.separatorStyle = .none

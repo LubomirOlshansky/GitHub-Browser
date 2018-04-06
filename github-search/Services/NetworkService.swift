@@ -53,7 +53,14 @@ extension NetworkService: TargetType {
     var task: Task {
         switch self {
         case .getUsers(let userName), .getRepos(let userName):
-            return .requestParameters(parameters: ["q": userName, "client_id": "626f0b85d71143696356", "client_secret": "44f0947801043cc0f372ec572c35f944ead64ed9", "per_page": "5"],  encoding: URLEncoding.default)
+            let parameters = [
+                "q": userName,
+                "client_id": Environment.clientID,
+                "client_secret": Environment.clientSecret,
+                "per_page": "5"
+            ]
+            
+            return .requestParameters(parameters: parameters,  encoding: URLEncoding.default)
             
         case .getUserRep(_), .getUserInfo(_):
             return .requestPlain

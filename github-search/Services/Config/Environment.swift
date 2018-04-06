@@ -8,8 +8,8 @@
 
 import Foundation
 
-protocol Environment {
-    
-    var client_id: String { get }
-    var client_secret: String { get }
+struct Environment {
+    static let clientID = "626f0b85d71143696356"
+    static let clientSecret = "44f0947801043cc0f372ec572c35f944ead64ed9"
 }
+
