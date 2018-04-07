@@ -11,26 +11,30 @@ import XCTest
 
 class github_searchTests: XCTestCase {
     
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+       
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+       
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testSearchVC() {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        XCTAssertNotNil(sb, "Could not initiate storyboard for search vc creation")
+        let vc = sb.instantiateViewController(withIdentifier: "SearchTableViewController") as? SearchTableViewController
+        XCTAssertNotNil(vc, "Could not instantiate search vc")
+        _ = vc?.view
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testDetailVC() {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        XCTAssertNotNil(sb, "Could not initiate storyboard for detail vc creation")
+        let vc = sb.instantiateViewController(withIdentifier: "UserDetailViewController") as? UserDetailViewController
+        XCTAssertNotNil(vc, "Could not instantiate detail vc ")
+        _ = vc?.view
     }
     
 }

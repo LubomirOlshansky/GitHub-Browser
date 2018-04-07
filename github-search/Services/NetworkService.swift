@@ -43,11 +43,18 @@ extension NetworkService: TargetType {
     
     var sampleData: Data {
         switch self {
-        case .getRepos(_), .getUsers(_), .getUserRep(_), .getUserInfo(_):
-            return Data()
+        case .getUsers(let userName):
+             return "{'name':'\(userName)'}".data(using: .utf8)!
+        case .getRepos(let getRepos):
+            return "{'name':'\(getRepos)'}".data(using: .utf8)!
+        case .getUserRep(let name):
+              return "{'name':'\(name)'}".data(using: .utf8)!
+        case .getUserInfo(let userName):
+              return "{'name':'\(userName)'}".data(using: .utf8)!
+        
+        
         }
     }
-    
     
     //For unauthenticated requests, the rate limit allows to make only 10 requests per minute, with client_id/client_secret - up to 30
     var task: Task {

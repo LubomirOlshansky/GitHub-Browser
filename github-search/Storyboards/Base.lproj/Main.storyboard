@@ -14,7 +14,7 @@
         <!--Search Table View Controller-->
         <scene sceneID="Pu5-Kr-HeO">
             <objects>
-                <tableViewController id="E1E-cd-lPm" customClass="SearchTableViewController" customModule="github_search" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SearchTableViewController" id="E1E-cd-lPm" customClass="SearchTableViewController" customModule="github_search" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="TYg-Ie-37Z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -81,7 +81,7 @@
         <!--User Detail View Controller-->
         <scene sceneID="u6h-Re-dlD">
             <objects>
-                <viewController id="qdM-Tc-Mym" customClass="UserDetailViewController" customModule="github_search" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserDetailViewController" id="qdM-Tc-Mym" customClass="UserDetailViewController" customModule="github_search" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G2b-Pk-D4a">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
