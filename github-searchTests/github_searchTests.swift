@@ -7,19 +7,35 @@
 //
 
 import XCTest
+import Moya
+
 @testable import github_search
 
 class github_searchTests: XCTestCase {
     
+    var userDetailService: UserDetailService!
     
     override func setUp() {
         super.setUp()
+         userDetailService = UserDetailService(provider: MoyaProvider<NetworkService>(stubClosure: MoyaProvider.immediatelyStub))
        
     }
     
     override func tearDown() {
        
         super.tearDown()
+    }
+    
+    
+    func  testGetInfo() {
+        let expected = ("https://avatars2.githubusercontent.com/u/18430493?v=4", 0)
+        var requestResponse: (String, Int) = ("", 5)
+        
+        userDetailService.loadUserDetail(name: "lubomirolshansky") {
+            responce in
+            requestResponse = responce
+            XCTAssert(requestResponse == expected)
+        }
     }
     
     func testSearchVC() {

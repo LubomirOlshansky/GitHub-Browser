@@ -9,19 +9,23 @@
 import Foundation
 import Moya
 
-class SearchService: UIViewController {
+struct SearchService {
 
-    let userProvider = MoyaProvider<NetworkService>()
+    private let provider: MoyaProvider<NetworkService>
     let dispatchGroup = DispatchGroup()
     typealias loadRepositoriesDataComplition = ([Repo]) -> Void
     typealias loadUsersDataComplition = ([User]) -> Void
     typealias loadUsersAndReposDataComplition = ([Base]) -> Void
     
     
+    //init with a default parameter to specify a different provider when testing.
+    init(provider: MoyaProvider<NetworkService> = MoyaProvider<NetworkService>()) {
+        self.provider = provider
+    }
     
     func loadRepositories(name: String, completion: @escaping loadRepositoriesDataComplition) {
         dispatchGroup.enter()
-        userProvider.request(.getRepos(repoName: name)) { (result) in
+        provider.request(.getRepos(repoName: name)) { (result) in
         
             switch result {
             case .success(let response):
@@ -38,7 +42,7 @@ class SearchService: UIViewController {
     }
     func loadUsers(name: String, completion: @escaping loadUsersDataComplition) {
           dispatchGroup.enter()
-        userProvider.request(.getUsers(userName: name)) { (result) in
+        provider.request(.getUsers(userName: name)) { (result) in
             switch result {
             case .success(let response):
                 

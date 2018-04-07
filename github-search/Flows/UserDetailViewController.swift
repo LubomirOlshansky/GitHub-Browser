@@ -39,7 +39,7 @@ class UserDetailViewController: UIViewController {
      private func loadUserImageAndFollowers() {
         userDetailService.loadUserDetail(name: self.user) { [weak self]
             responce in
-            
+            print(responce)
             self?.followers.text = String(responce.1)
             if let imageURL = URL(string: responce.0) {
                 DispatchQueue.global().async {
