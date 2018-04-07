@@ -13,12 +13,10 @@ import Moya
 
 class github_searchTests: XCTestCase {
     
-    var userDetailService: UserDetailService!
-    
+    let provider = MoyaProvider<NetworkService>(stubClosure: MoyaProvider.immediatelyStub)
+    var resData: Data? = nil
     override func setUp() {
         super.setUp()
-         userDetailService = UserDetailService(provider: MoyaProvider<NetworkService>(stubClosure: MoyaProvider.immediatelyStub))
-       
     }
     
     override func tearDown() {
@@ -28,15 +26,52 @@ class github_searchTests: XCTestCase {
     
     
     func  testGetInfo() {
-        let expected = ("https://avatars2.githubusercontent.com/u/18430493?v=4", 0)
-        var requestResponse: (String, Int) = ("", 5)
         
-        userDetailService.loadUserDetail(name: "lubomirolshansky") {
-            responce in
-            requestResponse = responce
-            XCTAssert(requestResponse == expected)
+        provider.request(.getUserInfo(userName: "lubomirolhansky")) { (result) in
+            
+            switch result {
+            case .success(let response):
+                
+                self.resData = response.data
+                
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+        let pred = NSPredicate(format: "resData != nil")
+        let exp = expectation(for: pred, evaluatedWith: self, handler: nil)
+        let res = XCTWaiter.wait(for: [exp], timeout: 5.0)
+        if res == XCTWaiter.Result.completed {
+            XCTAssertNotNil(resData, "No data recived from the server")
+        } else {
+            XCTAssert(false, "The call to get some other error")
         }
     }
+    func  testGetUsers() {
+        
+        provider.request(.getUserRep(name: "lubomirolhansky")) { (result) in
+            
+            switch result {
+            case .success(let response):
+                
+                self.resData = response.data
+                
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+        let pred = NSPredicate(format: "resData != nil")
+        let exp = expectation(for: pred, evaluatedWith: self, handler: nil)
+        let res = XCTWaiter.wait(for: [exp], timeout: 5.0)
+        if res == XCTWaiter.Result.completed {
+            XCTAssertNotNil(resData, "No data recived from the server")
+        } else {
+            XCTAssert(false, "The call to get some other error")
+        }
+    }
+    
     
     func testSearchVC() {
         let sb = UIStoryboard(name: "Main", bundle: nil)

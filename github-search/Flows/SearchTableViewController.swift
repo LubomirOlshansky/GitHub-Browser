@@ -18,7 +18,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
     
     //MARK: Properties
     let searchService = SearchService()
-    var temp = [Base]()
+    var githubList = [Base]()
     let userProvider = MoyaProvider<NetworkService>()
     var searchController: UISearchController!
     
@@ -65,10 +65,10 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
         searchService.loadUsersAndRepos(name: searchText) { [weak self]
             responce in
 
-            self?.temp = responce.sorted(by: {$0.id < $1.id})
+            self?.githubList = responce.sorted(by: {$0.id < $1.id})
             
             //if no results found, show background view with message
-            let isNotFound = self?.temp.count == 0
+            let isNotFound = self?.githubList.count == 0
             self?.tableView.separatorStyle =  isNotFound ? .none : .singleLine
             self?.emptySearchResult.isHidden = !isNotFound
             
@@ -78,13 +78,11 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
 }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        
           return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-         return temp.count
+         return githubList.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -92,14 +90,14 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
         let cellIdentifier = "UserCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
      
-        cell.textLabel?.text = temp[indexPath.row].name
-        cell.detailTextLabel?.text = temp[indexPath.row].isUser ? "user" : "repository"
+        cell.textLabel?.text = githubList[indexPath.row].name
+        cell.detailTextLabel?.text = githubList[indexPath.row].isUser ? "user" : "repository"
         
         return cell
 }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if temp[indexPath.row].isUser == true {
+        if githubList[indexPath.row].isUser == true {
             performSegue(withIdentifier: "toDatailVC", sender: indexPath)
         } else { return }
     }
@@ -108,7 +106,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
         if segue.identifier == "toDatailVC" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let destinationController = segue.destination as! UserDetailViewController
-                destinationController.user = temp[indexPath.row].name
+                destinationController.user = githubList[indexPath.row].name
             }
         }
     }

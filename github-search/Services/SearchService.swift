@@ -9,19 +9,14 @@
 import Foundation
 import Moya
 
-struct SearchService {
+class SearchService: UIViewController {
 
-    private let provider: MoyaProvider<NetworkService>
+    private let provider = MoyaProvider<NetworkService>()
     let dispatchGroup = DispatchGroup()
     typealias loadRepositoriesDataComplition = ([Repo]) -> Void
     typealias loadUsersDataComplition = ([User]) -> Void
     typealias loadUsersAndReposDataComplition = ([Base]) -> Void
     
-    
-    //init with a default parameter to specify a different provider when testing.
-    init(provider: MoyaProvider<NetworkService> = MoyaProvider<NetworkService>()) {
-        self.provider = provider
-    }
     
     func loadRepositories(name: String, completion: @escaping loadRepositoriesDataComplition) {
         dispatchGroup.enter()

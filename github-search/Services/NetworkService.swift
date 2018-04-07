@@ -44,13 +44,13 @@ extension NetworkService: TargetType {
     var sampleData: Data {
         switch self {
         case .getUsers(let userName):
-             return "{'name':'\(userName)'}".data(using: .utf8)!
+             return "{'name':'\(userName)'}".utf8Encoded
         case .getRepos(let getRepos):
-            return "{'name':'\(getRepos)'}".data(using: .utf8)!
+            return "{'name':'\(getRepos)'}".utf8Encoded
         case .getUserRep(let name):
-              return "{'name':'\(name)'}".data(using: .utf8)!
+              return "{'name':'\(name)'}".utf8Encoded
         case .getUserInfo(let userName):
-              return "{'name':'\(userName)'}".data(using: .utf8)!
+           return "{'name':'\(userName)'}".utf8Encoded
         
         
         }
@@ -64,7 +64,7 @@ extension NetworkService: TargetType {
                 "q": userName,
                 "client_id": Environment.clientID,
                 "client_secret": Environment.clientSecret,
-                "per_page": "5"
+                "per_page": "10"
             ]
             
             return .requestParameters(parameters: parameters,  encoding: URLEncoding.default)
@@ -77,4 +77,11 @@ extension NetworkService: TargetType {
     var headers: [String : String]? {
         return ["Content-Typer": "application/json"]
         }
+}
+private extension String {
+
+    
+    var utf8Encoded: Data {
+        return data(using: .utf8)!
+    }
 }

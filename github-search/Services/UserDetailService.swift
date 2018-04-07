@@ -9,16 +9,12 @@
 import UIKit
 import Moya
 
-struct UserDetailService {
+class UserDetailService: UIViewController {
 
-    private let provider: MoyaProvider<NetworkService>
+    private let provider = MoyaProvider<NetworkService>()
         
     typealias loadUserDetailDataComplition = ((String, Int)) -> Void
     typealias loadUserReposDataComplition = ([UserRepos]) -> Void
-    
-        init(provider: MoyaProvider<NetworkService> = MoyaProvider<NetworkService>()) {
-            self.provider = provider
-        }
 
     
     func loadUserDetail(name: String, completion: @escaping loadUserDetailDataComplition) {
@@ -28,9 +24,9 @@ struct UserDetailService {
             switch result {
             case .success(let response):
                 
+                print(response.data)
                 guard let userDetail = try? JSONDecoder().decode(UserDetail.self, from: response.data) else { return }
                 
-                print(userDetail)
                  DispatchQueue.main.async {
                     completion((userDetail.avatar_url, userDetail.followers))
                 }
